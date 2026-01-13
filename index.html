@@ -160,7 +160,7 @@
             color: var(--accent-gold);
         }
 
-        /* ===== PROFESSIONAL NAVIGATION ===== */
+        /* ===== PROFESSIONAL NAVIGATION - MOBILE OPTIMIZED ===== */
         .premium-header {
             position: fixed;
             top: 0;
@@ -255,6 +255,7 @@
             color: var(--text-light);
             font-size: 1.5rem;
             cursor: pointer;
+            z-index: 1001;
         }
 
         /* ===== FIXED HERO SECTION WITH PROPER SPACING ===== */
@@ -1002,23 +1003,48 @@
             
             .main-nav {
                 display: none;
-                position: absolute;
-                top: 100%;
+                position: fixed;
+                top: 0;
                 left: 0;
                 right: 0;
+                bottom: 0;
                 background: var(--primary-dark);
                 flex-direction: column;
-                padding: 20px;
+                padding: 100px 30px 30px;
                 border-top: 1px solid var(--border-color);
-                border-bottom: 1px solid var(--border-color);
+                z-index: 1000;
+                overflow-y: auto;
             }
 
             .main-nav.active {
                 display: flex;
             }
 
+            /* HIDE CONTACT INFO AND SECONDARY BUTTON ON MOBILE */
+            .contact-info,
+            .header-cta .btn-secondary {
+                display: none !important;
+            }
+            
+            /* SHOW ONLY HAMBURGER MENU ON MOBILE */
             .mobile-menu-btn {
                 display: block;
+                font-size: 1.8rem;
+            }
+            
+            /* SIMPLIFY MOBILE HEADER LAYOUT */
+            .header-container {
+                justify-content: space-between;
+                padding: 0 15px;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+                flex: 1;
+            }
+            
+            .header-cta {
+                gap: 15px;
             }
 
             .hero-features {
@@ -1055,6 +1081,19 @@
             
             .hero-content {
                 padding: 0;
+            }
+            
+            /* Mobile menu close button */
+            .mobile-close-btn {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: none;
+                border: none;
+                color: var(--text-light);
+                font-size: 2rem;
+                cursor: pointer;
+                z-index: 1001;
             }
         }
 
@@ -1131,11 +1170,36 @@
             .hero-subtitle::before {
                 width: 40px;
             }
+            
+            /* Mobile menu items */
+            .nav-link {
+                padding: 15px 0;
+                font-size: 1.1rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                width: 100%;
+            }
+            
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+            
+            .logo-text {
+                font-size: 1.4rem;
+            }
         }
 
         @media (max-width: 480px) {
             .header-container {
-                padding: 0 15px;
+                padding: 0 10px;
+            }
+            
+            .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            .mobile-menu-btn {
+                font-size: 1.6rem;
+                padding: 5px;
             }
 
             .car-details {
@@ -1178,9 +1242,42 @@
             }
             
             .logo-text {
-                font-size: 1.6rem;
+                font-size: 1.2rem;
+            }
+            
+            .mobile-menu-btn {
+                font-size: 1.5rem;
             }
         }
+
+        /* HIDE CONTACT INFO AND SECONDARY BUTTON ON MOBILE */
+.contact-info,
+.header-cta .btn-secondary {
+    display: none !important;
+}
+
+/* SIMPLIFY MOBILE HEADER LAYOUT */
+.header-container {
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    flex: 1;
+}
+
+.header-cta {
+    gap: 15px;
+}
+
+/* SHOW ONLY HAMBURGER MENU ON MOBILE */
+.mobile-menu-btn {
+    display: block;
+    font-size: 1.8rem;
+}
+
+        
     </style>
 </head>
 <body>
@@ -1189,6 +1286,9 @@
         <div class="header-container">
             <a href="#home" class="logo-text">SMB<span> CAR SALES</span></a>
             <nav class="main-nav">
+                <button class="mobile-close-btn" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
                 <a href="#inventory" class="nav-link">Our Stock</a>
                 <a href="#services" class="nav-link">Services</a>
                 <a href="#showroom" class="nav-link">Showroom</a>
@@ -1485,7 +1585,7 @@
                     </div>
                 </div>
 
-                <!-- Car 2 - FIXED IMAGE URL -->
+                <!-- Car 2 -->
                 <div class="car-card">
                     <div class="car-image">
                         <img src="https://image2url.com/r2/default/images/1768339582562-a018185c-af73-47bb-8ced-b3d5ed0ab1da.png" alt="BMW 330i">                 
@@ -1834,10 +1934,17 @@
 
         // Mobile Menu Toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileCloseBtn = document.querySelector('.mobile-close-btn');
         const mainNav = document.querySelector('.main-nav');
         
         mobileMenuBtn.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
+            mainNav.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        mobileCloseBtn.addEventListener('click', () => {
+            mainNav.classList.remove('active');
+            document.body.style.overflow = 'auto';
         });
 
         // Close mobile menu on link click
@@ -1845,6 +1952,7 @@
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 992) {
                     mainNav.classList.remove('active');
+                    document.body.style.overflow = 'auto';
                 }
             });
         });
