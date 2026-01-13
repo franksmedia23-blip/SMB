@@ -976,48 +976,33 @@
             transform: translateY(-3px);
         }
 
-        /* ===== RESPONSIVE DESIGN OPTIMIZATION ===== */
-        @media (max-width: 1200px) {
-            h1 {
-                font-size: 3rem;
-            }
-            
-            .welcome-content,
-            .showroom-content,
-            .listing-container,
-            .location-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .car-details-section {
-                padding: 40px 30px;
-            }
-        }
-
+        /* ===== MOBILE MENU FIXES ===== */
         @media (max-width: 992px) {
             .premium-header {
                 height: 80px;
                 padding: 15px 0;
             }
             
+            /* HIDE DESKTOP NAV AND CONTACT INFO */
             .main-nav {
-                display: none;
                 position: fixed;
                 top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
+                left: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
                 background: var(--primary-dark);
                 flex-direction: column;
                 padding: 100px 30px 30px;
-                border-top: 1px solid var(--border-color);
-                z-index: 1000;
+                transition: left 0.3s ease;
+                z-index: 999;
                 overflow-y: auto;
+                border-right: 1px solid var(--border-color);
+                box-shadow: var(--shadow-xl);
             }
 
             .main-nav.active {
-                display: flex;
+                left: 0;
             }
 
             /* HIDE CONTACT INFO AND SECONDARY BUTTON ON MOBILE */
@@ -1030,6 +1015,11 @@
             .mobile-menu-btn {
                 display: block;
                 font-size: 1.8rem;
+                background: none;
+                border: none;
+                color: var(--text-light);
+                cursor: pointer;
+                z-index: 1000;
             }
             
             /* SIMPLIFY MOBILE HEADER LAYOUT */
@@ -1041,10 +1031,39 @@
             .logo-text {
                 font-size: 1.5rem;
                 flex: 1;
+                z-index: 1000;
             }
             
             .header-cta {
                 gap: 15px;
+            }
+
+            /* Mobile menu items */
+            .nav-link {
+                padding: 15px 0;
+                font-size: 1.1rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                width: 100%;
+            }
+            
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+
+            /* Mobile menu overlay */
+            .mobile-menu-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.8);
+                z-index: 998;
+                display: none;
+            }
+            
+            .mobile-menu-overlay.active {
+                display: block;
             }
 
             .hero-features {
@@ -1082,18 +1101,23 @@
             .hero-content {
                 padding: 0;
             }
+        }
+
+        @media (max-width: 1200px) {
+            h1 {
+                font-size: 3rem;
+            }
             
-            /* Mobile menu close button */
-            .mobile-close-btn {
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                background: none;
-                border: none;
-                color: var(--text-light);
-                font-size: 2rem;
-                cursor: pointer;
-                z-index: 1001;
+            .welcome-content,
+            .showroom-content,
+            .listing-container,
+            .location-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .car-details-section {
+                padding: 40px 30px;
             }
         }
 
@@ -1171,18 +1195,6 @@
                 width: 40px;
             }
             
-            /* Mobile menu items */
-            .nav-link {
-                padding: 15px 0;
-                font-size: 1.1rem;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                width: 100%;
-            }
-            
-            .nav-link:last-child {
-                border-bottom: none;
-            }
-            
             .logo-text {
                 font-size: 1.4rem;
             }
@@ -1249,35 +1261,6 @@
                 font-size: 1.5rem;
             }
         }
-
-        /* HIDE CONTACT INFO AND SECONDARY BUTTON ON MOBILE */
-.contact-info,
-.header-cta .btn-secondary {
-    display: none !important;
-}
-
-/* SIMPLIFY MOBILE HEADER LAYOUT */
-.header-container {
-    justify-content: space-between;
-    padding: 0 15px;
-}
-
-.logo-text {
-    font-size: 1.5rem;
-    flex: 1;
-}
-
-.header-cta {
-    gap: 15px;
-}
-
-/* SHOW ONLY HAMBURGER MENU ON MOBILE */
-.mobile-menu-btn {
-    display: block;
-    font-size: 1.8rem;
-}
-
-        
     </style>
 </head>
 <body>
@@ -1286,9 +1269,6 @@
         <div class="header-container">
             <a href="#home" class="logo-text">SMB<span> CAR SALES</span></a>
             <nav class="main-nav">
-                <button class="mobile-close-btn" aria-label="Close menu">
-                    <i class="fas fa-times"></i>
-                </button>
                 <a href="#inventory" class="nav-link">Our Stock</a>
                 <a href="#services" class="nav-link">Services</a>
                 <a href="#showroom" class="nav-link">Showroom</a>
@@ -1307,6 +1287,8 @@
                 </button>
             </div>
         </div>
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay"></div>
     </header>
 
     <!-- Professional Hero Section -->
@@ -1932,18 +1914,20 @@
             speed: 800,
         });
 
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle - SIMPLIFIED AND FIXED
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const mobileCloseBtn = document.querySelector('.mobile-close-btn');
         const mainNav = document.querySelector('.main-nav');
+        const mobileOverlay = document.querySelector('.mobile-menu-overlay');
         
         mobileMenuBtn.addEventListener('click', () => {
-            mainNav.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            mainNav.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : 'auto';
         });
         
-        mobileCloseBtn.addEventListener('click', () => {
+        mobileOverlay.addEventListener('click', () => {
             mainNav.classList.remove('active');
+            mobileOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
         });
 
@@ -1952,6 +1936,7 @@
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 992) {
                     mainNav.classList.remove('active');
+                    mobileOverlay.classList.remove('active');
                     document.body.style.overflow = 'auto';
                 }
             });
