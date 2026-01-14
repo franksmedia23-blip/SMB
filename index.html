@@ -160,7 +160,7 @@
             color: var(--accent-gold);
         }
 
-        /* ===== PROFESSIONAL NAVIGATION - MOBILE OPTIMIZED ===== */
+        /* ===== PROFESSIONAL NAVIGATION ===== */
         .premium-header {
             position: fixed;
             top: 0;
@@ -258,14 +258,14 @@
             z-index: 1001;
         }
 
-        /* ===== FIXED HERO SECTION WITH PROPER SPACING ===== */
+        /* ===== HERO SECTION ===== */
         .luxury-hero {
             min-height: 100vh;
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
-            padding: 160px 0 100px; /* Increased top padding for better spacing */
+            padding: 160px 0 100px;
         }
 
         .hero-bg {
@@ -275,7 +275,6 @@
             width: 100%;
             height: 100%;
             background: 
-                /* Enhanced gradient overlay for better text readability on mobile */
                 linear-gradient(to bottom, 
                     rgba(10, 10, 10, 0.85) 0%,
                     rgba(10, 10, 10, 0.75) 20%,
@@ -367,68 +366,7 @@
             color: var(--text-gray);
         }
 
-        /* ===== WELCOME SECTION ===== */
-        .welcome-section {
-            background: var(--primary-gray);
-            padding: 100px 0;
-        }
-
-        .welcome-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .welcome-text h2 {
-            margin-bottom: 30px;
-        }
-
-        .welcome-highlights {
-            margin-top: 30px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .highlight-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-
-        .highlight-icon {
-            color: var(--accent-gold);
-            font-size: 1.2rem;
-            margin-top: 5px;
-        }
-
-        /* ===== SHOWROOM SECTION ===== */
-        .showroom-section {
-            background: var(--primary-dark);
-            padding: 100px 0;
-        }
-
-        .showroom-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .showroom-image {
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .showroom-image img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-        }
-
-        /* ===== FIXED CAR LISTING WITH BETTER MOBILE VIEW ===== */
+        /* ===== PROFESSIONAL CAR GALLERY ===== */
         .car-listing {
             background: var(--primary-gray);
             padding: 100px 0;
@@ -436,31 +374,75 @@
 
         .listing-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.2fr 1fr;
             gap: 60px;
             background: var(--secondary-gray);
             border-radius: 4px;
             overflow: hidden;
             border: 1px solid var(--border-color);
-            min-height: 500px;
+            min-height: 600px;
         }
 
         .car-gallery {
             background: #000;
             display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .main-car-image-container {
+            flex: 1;
+            display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            padding: 20px;
+            background: #000;
             position: relative;
+            overflow: hidden;
+            min-height: 400px;
         }
 
         .main-car-image {
             width: 100%;
             height: 100%;
-            min-height: 400px;
-            object-fit: contain;
+            object-fit: cover;
+            transition: transform 0.5s ease;
             display: block;
+        }
+
+        .main-car-image:hover {
+            transform: scale(1.02);
+        }
+
+        .car-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            background: #111;
+            border-top: 1px solid var(--border-color);
+            height: 100px;
+        }
+
+        .car-thumbnail {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            opacity: 0.6;
+            filter: brightness(0.8);
+        }
+
+        .car-thumbnail:hover {
+            opacity: 0.9;
+            filter: brightness(1);
+        }
+
+        .car-thumbnail.active {
+            opacity: 1;
+            filter: brightness(1);
+            border-bottom: 3px solid var(--accent-gold);
         }
 
         .car-details-section {
@@ -468,6 +450,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            background: var(--secondary-gray);
         }
 
         .car-title-section {
@@ -477,13 +460,14 @@
         }
 
         .car-make-model {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--text-light);
             margin-bottom: 10px;
+            line-height: 1.2;
         }
 
         .car-price {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
             color: var(--accent-gold);
             font-family: var(--font-heading);
@@ -491,7 +475,7 @@
 
         .dealer-info {
             background: var(--primary-gray);
-            padding: 20px;
+            padding: 25px;
             border-radius: 4px;
             margin: 30px 0;
             border: 1px solid var(--border-color);
@@ -500,7 +484,8 @@
         .dealer-name {
             color: var(--accent-gold);
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
         }
 
         .dealer-contact {
@@ -508,7 +493,8 @@
             align-items: center;
             gap: 10px;
             color: var(--text-light);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
         }
 
         .specs-grid {
@@ -521,24 +507,36 @@
         .spec-item {
             display: flex;
             flex-direction: column;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .spec-label {
             color: var(--text-gray);
             font-size: 0.9rem;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .spec-value {
             color: var(--text-light);
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1.1rem;
         }
 
         .action-buttons {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             margin-top: 30px;
+        }
+
+        .action-buttons .btn {
+            padding: 18px 24px;
+            font-size: 0.85rem;
         }
 
         /* ===== PREMIUM INVENTORY ===== */
@@ -570,7 +568,7 @@
 
         .inventory-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
@@ -593,28 +591,25 @@
         }
 
         .car-image {
-            height: 220px;
+            height: 240px;
             background: #000;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
+            position: relative;
         }
 
         .car-image img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             transition: transform 0.5s ease;
         }
 
         .car-card:hover .car-image img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .car-content {
-            padding: 25px;
+            padding: 30px;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -628,12 +623,13 @@
         }
 
         .car-title {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--text-light);
+            line-height: 1.3;
         }
 
         .card-price {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--accent-gold);
             font-family: var(--font-heading);
@@ -642,9 +638,9 @@
         .car-details {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -653,12 +649,13 @@
             align-items: center;
             gap: 8px;
             color: var(--text-gray);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .detail-item i {
             color: var(--accent-gold);
             width: 16px;
+            font-size: 1rem;
         }
 
         .view-all-container {
@@ -712,7 +709,7 @@
             color: var(--text-light);
         }
 
-        /* ===== LOCATION & HOURS SECTION ===== */
+        /* ===== LOCATION & HOURS ===== */
         .location-hours {
             background: var(--primary-dark);
             padding: 100px 0;
@@ -754,7 +751,7 @@
             font-size: 1.1rem;
         }
 
-        /* ===== LUXURY TESTIMONIALS ===== */
+        /* ===== TESTIMONIALS ===== */
         .luxury-testimonials {
             background: var(--primary-gray);
             padding: 100px 0;
@@ -859,7 +856,7 @@
             gap: 15px;
         }
 
-        /* ===== PREMIUM FOOTER ===== */
+        /* ===== FOOTER ===== */
         .premium-footer {
             background: var(--primary-gray);
             border-top: 1px solid var(--border-color);
@@ -976,14 +973,35 @@
             transform: translateY(-3px);
         }
 
-        /* ===== MOBILE MENU FIXES ===== */
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .listing-container,
+            .welcome-content,
+            .showroom-content,
+            .location-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .listing-container {
+                min-height: auto;
+            }
+            
+            .car-details-section {
+                padding: 40px 30px;
+            }
+        }
+
         @media (max-width: 992px) {
             .premium-header {
                 height: 80px;
                 padding: 15px 0;
             }
             
-            /* HIDE DESKTOP NAV AND CONTACT INFO */
             .main-nav {
                 position: fixed;
                 top: 0;
@@ -1005,13 +1023,11 @@
                 left: 0;
             }
 
-            /* HIDE CONTACT INFO AND SECONDARY BUTTON ON MOBILE */
             .contact-info,
             .header-cta .btn-secondary {
                 display: none !important;
             }
             
-            /* SHOW ONLY HAMBURGER MENU ON MOBILE */
             .mobile-menu-btn {
                 display: block;
                 font-size: 1.8rem;
@@ -1022,7 +1038,6 @@
                 z-index: 1000;
             }
             
-            /* SIMPLIFY MOBILE HEADER LAYOUT */
             .header-container {
                 justify-content: space-between;
                 padding: 0 15px;
@@ -1038,7 +1053,6 @@
                 gap: 15px;
             }
 
-            /* Mobile menu items */
             .nav-link {
                 padding: 15px 0;
                 font-size: 1.1rem;
@@ -1050,7 +1064,6 @@
                 border-bottom: none;
             }
 
-            /* Mobile menu overlay */
             .mobile-menu-overlay {
                 position: fixed;
                 top: 0;
@@ -1071,7 +1084,7 @@
             }
 
             .inventory-grid {
-                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             }
 
             .cta-buttons {
@@ -1092,7 +1105,6 @@
                 grid-template-columns: 1fr;
             }
             
-            /* Improved mobile hero spacing */
             .luxury-hero {
                 padding: 140px 0 80px;
                 min-height: auto;
@@ -1100,24 +1112,6 @@
             
             .hero-content {
                 padding: 0;
-            }
-        }
-
-        @media (max-width: 1200px) {
-            h1 {
-                font-size: 3rem;
-            }
-            
-            .welcome-content,
-            .showroom-content,
-            .listing-container,
-            .location-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .car-details-section {
-                padding: 40px 30px;
             }
         }
 
@@ -1158,21 +1152,6 @@
                 grid-template-columns: 1fr;
             }
             
-            /* Improved mobile car images */
-            .listing-container {
-                grid-template-columns: 1fr;
-                min-height: auto;
-            }
-            
-            .car-gallery {
-                height: 300px;
-                padding: 15px;
-            }
-            
-            .main-car-image {
-                min-height: 270px;
-            }
-            
             .inventory-grid {
                 grid-template-columns: 1fr;
             }
@@ -1197,6 +1176,28 @@
             
             .logo-text {
                 font-size: 1.4rem;
+            }
+            
+            /* Mobile car thumbnails */
+            .car-thumbnails {
+                grid-template-columns: repeat(4, 1fr);
+                height: 80px;
+            }
+            
+            .car-thumbnail {
+                height: 80px;
+            }
+            
+            .main-car-image-container {
+                min-height: 300px;
+            }
+            
+            .car-make-model {
+                font-size: 1.8rem;
+            }
+            
+            .car-price {
+                font-size: 2.2rem;
             }
         }
 
@@ -1236,14 +1237,6 @@
                 padding-top: 40px;
             }
             
-            .car-price {
-                font-size: 2rem;
-            }
-            
-            .car-make-model {
-                font-size: 1.6rem;
-            }
-            
             .car-details-section {
                 padding: 30px 20px;
             }
@@ -1259,6 +1252,34 @@
             
             .mobile-menu-btn {
                 font-size: 1.5rem;
+            }
+            
+            /* Extra small mobile */
+            .car-thumbnails {
+                grid-template-columns: repeat(4, 1fr);
+                height: 70px;
+                gap: 0;
+            }
+            
+            .car-thumbnail {
+                height: 70px;
+            }
+            
+            .main-car-image-container {
+                min-height: 250px;
+            }
+            
+            .car-make-model {
+                font-size: 1.6rem;
+            }
+            
+            .car-price {
+                font-size: 2rem;
+            }
+            
+            .action-buttons .btn {
+                padding: 16px 20px;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -1440,13 +1461,21 @@
         </div>
     </section>
 
-    <!-- Example Car Listing -->
+    <!-- Professional Car Listing -->
     <section class="car-listing">
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 50px;">Featured Vehicle</h2>
             <div class="listing-container">
                 <div class="car-gallery">
-                    <img src="https://image.vcars.co.uk/vcarsdna/1051070_1.jpg" alt="Vauxhall Corsa" class="main-car-image">
+                    <div class="main-car-image-container">
+                        <img src="https://image.vcars.co.uk/vcarsdna/1051070_1.jpg" alt="Vauxhall Corsa" class="main-car-image" id="mainCarImage">
+                    </div>
+                    <div class="car-thumbnails">
+                        <img src="https://image.vcars.co.uk/vcarsdna/1051070_1.jpg" alt="Vauxhall Corsa Front" class="car-thumbnail active" onclick="changeCarImage('https://image.vcars.co.uk/vcarsdna/1051070_1.jpg', this)">
+                        <img src="https://image.vcars.co.uk/vcarsdna/1051070_2.jpg" alt="Vauxhall Corsa Side" class="car-thumbnail" onclick="changeCarImage('https://image.vcars.co.uk/vcarsdna/1051070_2.jpg', this)">
+                        <img src="https://image.vcars.co.uk/vcarsdna/1051070_3.jpg" alt="Vauxhall Corsa Rear" class="car-thumbnail" onclick="changeCarImage('https://image.vcars.co.uk/vcarsdna/1051070_3.jpg', this)">
+                        <img src="https://image.vcars.co.uk/vcarsdna/1051070_10.jpg" alt="Vauxhall Corsa Interior" class="car-thumbnail" onclick="changeCarImage('https://image.vcars.co.uk/vcarsdna/1051070_10.jpg', this)">
+                    </div>
                 </div>
                 <div class="car-details-section">
                     <div class="car-title-section">
@@ -1601,10 +1630,10 @@
                     </div>
                 </div>
 
-                <!-- Car 3 -->
+                <!-- Car 3 - UPDATED MERCEDES PHOTO -->
                 <div class="car-card">
                     <div class="car-image">
-                        <img src="https://image2url.com/r2/default/images/1768342177926-264913a8-f7e5-42e5-a93a-68b31ca4b92c.png" alt="Mercedes C-Class">
+                        <img src="https://image.vcars.co.uk/vcarsdna/1051509_1.jpg" alt="Mercedes C-Class">
                     </div>
                     <div class="car-content">
                         <div class="car-header">
@@ -1914,7 +1943,7 @@
             speed: 800,
         });
 
-        // Mobile Menu Toggle - SIMPLIFIED AND FIXED
+        // Mobile Menu Toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const mainNav = document.querySelector('.main-nav');
         const mobileOverlay = document.querySelector('.mobile-menu-overlay');
@@ -1968,6 +1997,26 @@
                 }
             });
         });
+
+        // Professional car gallery function
+        function changeCarImage(imageUrl, thumbnail) {
+            // Update main image
+            const mainImage = document.getElementById('mainCarImage');
+            mainImage.style.opacity = '0';
+            
+            setTimeout(() => {
+                mainImage.src = imageUrl;
+                mainImage.style.opacity = '1';
+            }, 200);
+            
+            // Remove active class from all thumbnails
+            document.querySelectorAll('.car-thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            
+            // Add active class to clicked thumbnail
+            thumbnail.classList.add('active');
+        }
     </script>
 </body>
 </html>
