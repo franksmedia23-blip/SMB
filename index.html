@@ -65,7 +65,7 @@
         }
 
         section {
-            padding: 100px 0;
+            padding: 80px 0;
         }
 
         /* ===== TYPOGRAPHY ===== */
@@ -260,12 +260,12 @@
 
         /* ===== HERO SECTION ===== */
         .luxury-hero {
-            min-height: 100vh;
+            min-height: 90vh;
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
-            padding: 160px 0 100px;
+            padding: 160px 0 80px;
         }
 
         .hero-bg {
@@ -366,52 +366,40 @@
             color: var(--text-gray);
         }
 
-        /* ===== PROFESSIONAL CAR GALLERY ===== */
+        /* ===== IMPROVED FEATURED VEHICLE - IMAGE ABOVE SPECS ===== */
         .car-listing {
             background: var(--primary-gray);
-            padding: 100px 0;
+            padding: 80px 0;
         }
 
         .listing-container {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 60px;
             background: var(--secondary-gray);
-            border-radius: 4px;
+            border-radius: 8px;
             overflow: hidden;
             border: 1px solid var(--border-color);
-            min-height: 600px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .car-gallery {
+        .car-gallery-section {
+            width: 100%;
             background: #000;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            position: relative;
         }
 
         .main-car-image-container {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #000;
             position: relative;
+            width: 100%;
+            height: 400px;
             overflow: hidden;
-            min-height: 400px;
+            background: #000;
         }
 
         .main-car-image {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+            object-fit: contain; /* Changed from cover to contain */
             display: block;
-        }
-
-        .main-car-image:hover {
-            transform: scale(1.02);
+            background: #000; /* Black background for consistency */
         }
 
         .car-thumbnails {
@@ -420,16 +408,15 @@
             gap: 0;
             background: #111;
             border-top: 1px solid var(--border-color);
-            height: 100px;
+            height: 90px;
         }
 
         .car-thumbnail {
             width: 100%;
-            height: 100px;
+            height: 90px;
             object-fit: cover;
             cursor: pointer;
             transition: all 0.3s ease;
-            border: none;
             opacity: 0.6;
             filter: brightness(0.8);
         }
@@ -446,11 +433,9 @@
         }
 
         .car-details-section {
-            padding: 50px;
+            padding: 40px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            background: var(--secondary-gray);
         }
 
         .car-title-section {
@@ -467,34 +452,10 @@
         }
 
         .car-price {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: var(--accent-gold);
             font-family: var(--font-heading);
-        }
-
-        .dealer-info {
-            background: var(--primary-gray);
-            padding: 25px;
-            border-radius: 4px;
-            margin: 30px 0;
-            border: 1px solid var(--border-color);
-        }
-
-        .dealer-name {
-            color: var(--accent-gold);
-            font-weight: 600;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-        }
-
-        .dealer-contact {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--text-light);
-            margin-bottom: 12px;
-            font-size: 1.1rem;
         }
 
         .specs-grid {
@@ -527,6 +488,30 @@
             font-size: 1.1rem;
         }
 
+        .dealer-info {
+            background: var(--primary-gray);
+            padding: 25px;
+            border-radius: 4px;
+            margin: 30px 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .dealer-name {
+            color: var(--accent-gold);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .dealer-contact {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
         .action-buttons {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -534,15 +519,50 @@
             margin-top: 30px;
         }
 
-        .action-buttons .btn {
-            padding: 18px 24px;
-            font-size: 0.85rem;
+        /* ===== IMPROVED SHOWROOM & WELCOME IMAGES ===== */
+        .welcome-section {
+            background: var(--primary-gray);
+            padding: 80px 0;
+        }
+
+        .welcome-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .welcome-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .showroom-section {
+            background: var(--primary-dark);
+            padding: 80px 0;
+        }
+
+        .showroom-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .showroom-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: var(--shadow-lg);
         }
 
         /* ===== PREMIUM INVENTORY ===== */
         .premium-inventory {
             background: var(--primary-dark);
-            padding: 100px 0;
+            padding: 80px 0;
         }
 
         .section-header {
@@ -568,7 +588,7 @@
 
         .inventory-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
@@ -666,7 +686,7 @@
         /* ===== PREMIUM SERVICES ===== */
         .premium-services {
             background: var(--primary-gray);
-            padding: 100px 0;
+            padding: 80px 0;
         }
 
         .services-grid {
@@ -712,7 +732,7 @@
         /* ===== LOCATION & HOURS ===== */
         .location-hours {
             background: var(--primary-dark);
-            padding: 100px 0;
+            padding: 80px 0;
         }
 
         .location-content {
@@ -754,7 +774,7 @@
         /* ===== TESTIMONIALS ===== */
         .luxury-testimonials {
             background: var(--primary-gray);
-            padding: 100px 0;
+            padding: 80px 0;
         }
 
         .testimonial-slider {
@@ -819,7 +839,7 @@
                     rgba(10, 10, 10, 0.92) 100%),
                 url('https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2025&q=80') center/cover no-repeat;
             text-align: center;
-            padding: 120px 0;
+            padding: 100px 0;
         }
 
         .contact-cta h2 {
@@ -979,16 +999,11 @@
                 font-size: 3rem;
             }
             
-            .listing-container,
             .welcome-content,
             .showroom-content,
             .location-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
-            }
-            
-            .listing-container {
-                min-height: auto;
             }
             
             .car-details-section {
@@ -1113,11 +1128,16 @@
             .hero-content {
                 padding: 0;
             }
+            
+            /* Better mobile featured car */
+            .main-car-image-container {
+                height: 350px;
+            }
         }
 
         @media (max-width: 768px) {
             section {
-                padding: 80px 0;
+                padding: 60px 0;
             }
 
             h1 {
@@ -1178,18 +1198,17 @@
                 font-size: 1.4rem;
             }
             
-            /* Mobile car thumbnails */
+            /* Mobile featured car */
+            .main-car-image-container {
+                height: 300px;
+            }
+            
             .car-thumbnails {
-                grid-template-columns: repeat(4, 1fr);
                 height: 80px;
             }
             
             .car-thumbnail {
                 height: 80px;
-            }
-            
-            .main-car-image-container {
-                min-height: 300px;
             }
             
             .car-make-model {
@@ -1198,6 +1217,12 @@
             
             .car-price {
                 font-size: 2.2rem;
+            }
+            
+            /* Fixed showroom/welcome images */
+            .welcome-image img,
+            .showroom-image img {
+                height: 350px;
             }
         }
 
@@ -1255,18 +1280,16 @@
             }
             
             /* Extra small mobile */
+            .main-car-image-container {
+                height: 250px;
+            }
+            
             .car-thumbnails {
-                grid-template-columns: repeat(4, 1fr);
                 height: 70px;
-                gap: 0;
             }
             
             .car-thumbnail {
                 height: 70px;
-            }
-            
-            .main-car-image-container {
-                min-height: 250px;
             }
             
             .car-make-model {
@@ -1280,6 +1303,12 @@
             .action-buttons .btn {
                 padding: 16px 20px;
                 font-size: 0.8rem;
+            }
+            
+            /* Fixed showroom/welcome images for mobile */
+            .welcome-image img,
+            .showroom-image img {
+                height: 300px;
             }
         }
     </style>
@@ -1428,7 +1457,7 @@
                     </div>
                 </div>
                 <div class="welcome-image">
-                    <img src="https://image2url.com/r2/default/images/1768340943381-7e030316-b789-4809-9b24-e417f9ef7796.png" alt="SMB Car Sales Dealership" style="width:100%; border-radius: 4px;">
+                    <img src="https://image2url.com/r2/default/images/1768340943381-7e030316-b789-4809-9b24-e417f9ef7796.png" alt="SMB Car Sales Dealership">
                 </div>
             </div>
         </div>
@@ -1461,12 +1490,13 @@
         </div>
     </section>
 
-    <!-- Professional Car Listing -->
+    <!-- Featured Vehicle - IMAGE ABOVE SPECS LAYOUT -->
     <section class="car-listing">
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 50px;">Featured Vehicle</h2>
             <div class="listing-container">
-                <div class="car-gallery">
+                <!-- Gallery Section - NOW ABOVE -->
+                <div class="car-gallery-section">
                     <div class="main-car-image-container">
                         <img src="https://image.vcars.co.uk/vcarsdna/1051070_1.jpg" alt="Vauxhall Corsa" class="main-car-image" id="mainCarImage">
                     </div>
@@ -1477,6 +1507,8 @@
                         <img src="https://image.vcars.co.uk/vcarsdna/1051070_10.jpg" alt="Vauxhall Corsa Interior" class="car-thumbnail" onclick="changeCarImage('https://image.vcars.co.uk/vcarsdna/1051070_10.jpg', this)">
                     </div>
                 </div>
+                
+                <!-- Details Section - NOW BELOW -->
                 <div class="car-details-section">
                     <div class="car-title-section">
                         <h1 class="car-make-model">Vauxhall Corsa 1.0 ecoFLEX</h1>
@@ -1562,32 +1594,32 @@
                 </p>
             </div>
             <div class="inventory-grid">
-                <!-- Car 1 -->
+                <!-- Car 1 - UPDATED TO PLACEHOLDER TEXT -->
                 <div class="car-card">
                     <div class="car-image">
-                        <img src="https://image2url.com/r2/default/images/1768338385104-40182828-c451-4ba8-8f7d-c14c53048cf8.png" alt="Audi A4">
+                        <img src="https://image2url.com/r2/default/images/1768338385104-40182828-c451-4ba8-8f7d-c14c53048cf8.png" alt="Example Car">
                     </div>
                     <div class="car-content">
                         <div class="car-header">
-                            <h3 class="car-title">Audi A4 S-Line</h3>
+                            <h3 class="car-title">Example Luxury Sedan</h3>
                             <div class="card-price">£24,950</div>
                         </div>
                         <div class="car-details">
                             <div class="detail-item">
                                 <i class="fas fa-tachometer-alt"></i>
-                                <span>28,500 miles</span>
+                                <span>Example mileage</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-cog"></i>
-                                <span>Automatic</span>
+                                <span>Example transmission</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-gas-pump"></i>
-                                <span>Diesel</span>
+                                <span>Example fuel type</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-palette"></i>
-                                <span>Navy Blue</span>
+                                <span>Example colour</span>
                             </div>
                         </div>
                         <a href="tel:07809402259" class="btn btn-secondary" style="width: 100%; margin-top: auto;">
@@ -1596,32 +1628,32 @@
                     </div>
                 </div>
 
-                <!-- Car 2 -->
+                <!-- Car 2 - UPDATED TO PLACEHOLDER TEXT -->
                 <div class="car-card">
                     <div class="car-image">
-                        <img src="https://image2url.com/r2/default/images/1768339582562-a018185c-af73-47bb-8ced-b3d5ed0ab1da.png" alt="BMW 330i">                 
+                        <img src="https://image2url.com/r2/default/images/1768339582562-a018185c-af73-47bb-8ced-b3d5ed0ab1da.png" alt="Example Car">                 
                     </div>
                     <div class="car-content">
                         <div class="car-header">
-                            <h3 class="car-title">2020 BMW 330i</h3>
+                            <h3 class="car-title">Example Premium Saloon</h3>
                             <div class="card-price">£31,750</div>
                         </div>
                         <div class="car-details">
                             <div class="detail-item">
                                 <i class="fas fa-tachometer-alt"></i>
-                                <span>22,100 miles</span>
+                                <span>Example mileage</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-cog"></i>
-                                <span>Automatic</span>
+                                <span>Example transmission</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-gas-pump"></i>
-                                <span>Petrol</span>
+                                <span>Example fuel type</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-palette"></i>
-                                <span>Alpine White</span>
+                                <span>Example colour</span>
                             </div>
                         </div>
                         <a href="tel:07809402259" class="btn btn-secondary" style="width: 100%; margin-top: auto;">
@@ -1630,32 +1662,32 @@
                     </div>
                 </div>
 
-                <!-- Car 3 - UPDATED MERCEDES PHOTO -->
+                <!-- Car 3 - UPDATED TO PLACEHOLDER TEXT -->
                 <div class="car-card">
                     <div class="car-image">
-                        <img src="https://image.vcars.co.uk/vcarsdna/1051509_1.jpg" alt="Mercedes C-Class">
+                        <img src="https://image.vcars.co.uk/vcarsdna/1051509_1.jpg" alt="Example Car">
                     </div>
                     <div class="car-content">
                         <div class="car-header">
-                            <h3 class="car-title">2021 Mercedes C200</h3>
+                            <h3 class="car-title">Example Executive Model</h3>
                             <div class="card-price">£35,450</div>
                         </div>
                         <div class="car-details">
                             <div class="detail-item">
                                 <i class="fas fa-tachometer-alt"></i>
-                                <span>18,750 miles</span>
+                                <span>Example mileage</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-cog"></i>
-                                <span>Automatic</span>
+                                <span>Example transmission</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-gas-pump"></i>
-                                <span>Petrol Hybrid</span>
+                                <span>Example fuel type</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-palette"></i>
-                                <span>Obsidian Black</span>
+                                <span>Example colour</span>
                             </div>
                         </div>
                         <a href="tel:07809402259" class="btn btn-secondary" style="width: 100%; margin-top: auto;">
